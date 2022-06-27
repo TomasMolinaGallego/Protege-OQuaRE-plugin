@@ -49,7 +49,7 @@ public class MetricsGraph extends JTabbedPane implements Layout, ActionListener 
 		ChartPanel chartPanel = verticalBarChart.createTabChart();
 		panel.add(chartPanel);
 		panel.add(jComboBox);
-		addTab(VERTICAL_BAR_CHART_TITLE, panel);
+		addTab(VERTICAL_BAR_CHART_TITLE, new ScrollPane(panel));
 
 	}
 	

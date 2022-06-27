@@ -18,7 +18,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
-import javax.xml.bind.JAXBException;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
