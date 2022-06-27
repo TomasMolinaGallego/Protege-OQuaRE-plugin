@@ -4,6 +4,7 @@ Prerequisites
 To build and run the plugin, the following items must be installed:
 
 Apache's Maven.
+
 A Protégé distribution (5.0.0 or higher).  The Protégé 5.5.0 release is available from the main Protégé website.
 
 Build
