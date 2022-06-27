@@ -1,25 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
-	<groupId>edu.stanford.protege</groupId>
-	<artifactId>protege.plugin.examples</artifactId>
-	<version>2.0.0-SNAPSHOT</version>
+
+	<groupId>oquare</groupId>
+	<artifactId>oquare.plugin</artifactId>
+	<version>1.0</version>
 	<packaging>bundle</packaging>
 
-	<name>Protege Plugin Examples</name>
-	<description>Example plug-ins for the Protege Desktop ontology editor, e.g., views, menu items, etc.</description>
-	
+	<name>Oquare Plugin</name>
+	<description>Metrics</description>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<junit-jupiter.version>5.6.2</junit-jupiter.version>
 	</properties>
-  	
+
 	<dependencies>
-        <dependency>
+		<!-- https://mvnrepository.com/artifact/edu.stanford.protege/protege-editor-owl -->
+		<dependency>
 			<groupId>edu.stanford.protege</groupId>
-            <artifactId>protege-editor-owl</artifactId>
-			<version>5.0.0</version>
-        </dependency>
+			<artifactId>protege-editor-owl</artifactId>
+			<version>5.5.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.jfree/jfreechart -->
+		<dependency>
+			<groupId>org.jfree</groupId>
+			<artifactId>jfreechart</artifactId>
+			<version>1.5.0</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/com.miglayout/miglayout -->
+		<dependency>
+			<groupId>com.miglayout</groupId>
+			<artifactId>miglayout</artifactId>
+			<version>3.7.4</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.knowm.xchart/xchart -->
+		<dependency>
+			<groupId>org.knowm.xchart</groupId>
+			<artifactId>xchart</artifactId>
+			<version>3.6.5</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.apache.felix/org.apache.felix.main -->
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.apache.felix.main</artifactId>
+			<version>4.0.3</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.36</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
@@ -42,32 +83,55 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-            
-            <plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M5</version>
+			</plugin>
+
+			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
 				<version>3.0.0</version>
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Bundle-Activator>org.protege.editor.owl.ProtegeOWL</Bundle-Activator>
 						<Bundle-ClassPath>.</Bundle-ClassPath>
 						<Bundle-SymbolicName>${project.artifactId};singleton:=true</Bundle-SymbolicName>
-						<Bundle-Vendor>The Protege Development Team</Bundle-Vendor>
+
+						<Embed-Dependency>
+							miglayout; version="3.7.4"; scope=compile|runtime,
+                            xchart; version="3.6.5"; scope=compile|runtime,
+						</Embed-Dependency>
 						<Import-Package>
-							org.protege.editor.owl.*;version="5.0.0", <!-- equivalent to [5.0.0,infinity) -->
-							*
+							org.protege.editor.owl.*;version="5.0.0",
+							<!-- equivalent to [5.0.0,infinity) -->
+							*;resolution:=optional
 						</Import-Package>
 					</instructions>
 				</configuration>
-            </plugin>
-            
+			</plugin>
+
 			<plugin>
 				<artifactId>maven-eclipse-plugin</artifactId>
 				<version>2.9</version>
 				<configuration>
 					<pde>true</pde>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.2.4</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
