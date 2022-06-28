@@ -2,6 +2,7 @@ package plugin.view.components;
 
 import plugin.metrics.OquareMetrics;
 import plugin.utils.ParserXML;
+import plugin.utils.ScrollPane;
 import plugin.view.Layout;
 import plugin.view.graphs.QualityMetricsChart;
 import plugin.view.graphs.QualityCharacteristicsChart;

@@ -4,7 +4,7 @@
 <plugin>
 
     <extension id="OquareComponent" point="org.protege.editor.core.application.ViewComponent">
-        <label value="Graphical representation of the OQuaRE scores"/>
+        <label value="OQuaRE metrics and score"/>
         <class value="plugin.view.OquarePluginMetrics"/>
         <headerColor value="@org.protege.ontologycolor"/>
         <category value="@org.protege.ontologycategory"/>
