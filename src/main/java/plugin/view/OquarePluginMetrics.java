@@ -53,6 +53,35 @@ public class OquarePluginMetrics extends AbstractOWLViewComponent implements Lay
 	private static final Integer ERROR_CALCULATING_METRICS = 2;
 	private static final Integer ERROR_UNSATISFIABLE_CLASSES = 3;
 	private static final Integer ERROR_UNKNOW = 4;
+	private static final String WINDOWS = "win";
+	private static final String MAC = "osx";
+	private static final String UNIX = "uni";
+
+	private static String OS = System.getProperty("os.name").toLowerCase();
+
+	public static boolean isWindows() {
+		return OS.contains("win");
+	}
+
+	public static boolean isMac() {
+		return OS.contains("mac");
+	}
+
+	public static boolean isUnix() {
+		return (OS.contains("nix") || OS.contains("nux") || OS.contains("aix"));
+	}
+
+	public static String getOS() {
+		if (isWindows()) {
+			return WINDOWS;
+		} else if (isMac()) {
+			return MAC;
+		} else if (isUnix()) {
+			return UNIX;
+		} else {
+			return "err";
+		}
+	}
 
 	private OWLModelManager modelManager;
 	private final OWLModelManagerListener modelManagerListener = event -> {
@@ -103,7 +132,19 @@ public class OquarePluginMetrics extends AbstractOWLViewComponent implements Lay
 					path = path.substring(6);
 
 				// The oquare jar must be in the plugins folder, otherwise it won't work.
-				processBuilder.command("cmd.exe", "/c", "java -jar ./plugins/oquare-versions.jar --ontology " + path);
+				String currentOS = getOS();
+				if (currentOS.equals(WINDOWS)) {
+					processBuilder.command("cmd.exe", "/c",
+							"java -jar ./plugins/oquare-versions.jar --ontology " + path);
+				} else if (currentOS.equals(MAC)) {
+					processBuilder.command("/bin/bash", "-c",
+							"java -jar ./plugins/oquare-versions.jar --ontology " + path);
+				} else if (currentOS.equals(UNIX)) {
+					processBuilder.command("/bin/bash", "-c",
+							"java -jar ./plugins/oquare-versions.jar --ontology " + path);
+				} else {
+					return ERROR_PROCESS_START;
+				}
 
 				Process process = null;
 				try {
@@ -144,7 +185,7 @@ public class OquarePluginMetrics extends AbstractOWLViewComponent implements Lay
 					if (matchFound) {
 						file = matcher.group(1);
 						oquareMetrics = ParserXML.getOquareMetrics(file);
-//					      file.delete();
+						// file.delete();
 						return OK_STATUS;
 					} else {
 						return ERROR_CALCULATING_METRICS;
