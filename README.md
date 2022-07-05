@@ -1,3 +1,9 @@
+FOR NO DEVELOPERS:
+
+This repository contains the plugin and the OQuaRE jars necessary for the execution in Protégé.  Click the files "oquare-versions.jar" and "oquare.plugin-1.0.jar" and click downlowad. Once downloaded just copy both jar in the "plugins" directory of your Protégé Desktop and to open the plugin, inside Protégé, in "Window" -> "Views" -> "Ontology Views" -> "OQuaRE metrics and score"
+
+FOR DEVELOPERS:
+
 This repository contains code for the Protégé desktop plugin.
 
 Prerequisites
