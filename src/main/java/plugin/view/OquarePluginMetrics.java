@@ -185,7 +185,7 @@ public class OquarePluginMetrics extends AbstractOWLViewComponent implements Lay
 					if (matchFound) {
 						file = matcher.group(1);
 						oquareMetrics = ParserXML.getOquareMetrics(file);
-//					      file.delete();
+						// file.delete();
 						return OK_STATUS;
 					} else {
 						return ERROR_CALCULATING_METRICS;
