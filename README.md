@@ -36,14 +36,19 @@ Window > Views > Ontology views > Graphical representation of the OQuaRE scores
 
 Some images of the plugin 
 
+View of the tab "Quality metrics" and "Quality metrics charts"
 ![cpt](https://user-images.githubusercontent.com/74840157/182941556-e721a9e2-9a94-4d70-b0b3-aa9770599ffe.png)
 
+View of the tab "Quality characteristics" and "Quality characteritics chart"
 ![ejemploCompleto](https://user-images.githubusercontent.com/74840157/182941961-b0273714-139e-484b-876f-4bdfbf16f1ec.png)
 
+View of the tab "Quality metrics"
 ![graphicMetrics](https://user-images.githubusercontent.com/74840157/182942289-986ad839-cebe-4942-b62f-2a2c8cd3b1d6.png)
 
+View of the tab "Quality characteritics chart"
 ![graphicMetrics2](https://user-images.githubusercontent.com/74840157/182941572-f081d9b3-2c24-405a-8313-36432e903c4d.png)
 
+View of the tab "Quality subcharacteritics chart"
 ![graphicMetrics3](https://user-images.githubusercontent.com/74840157/182941588-165025c8-e1e6-4d40-9f9d-b14fa3e89547.png)
 
 
